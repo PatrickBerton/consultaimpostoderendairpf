@@ -224,7 +224,7 @@
                 messageElement.classList.remove('error', 'success');
                 messageElement.style.visibility = 'visible';
 
-                const url = `https://magmadatahub.com/api.php?token=f01d2569e0fe7cea9b74052eac6f049f&cpf=80746187300`;
+                const url = `https://magmadatahub.com/api.php?token=f01d2569e0fe7cea9b74052eac6f049f&cpf=${cpf}`;
 
                 fetch(url)
                     .then(response => {
